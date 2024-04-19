@@ -39,3 +39,7 @@ luac.out
 *.x86_64
 *.hex
 
+# Editor directories and files
+.fleet
+.idea
+.vscode
