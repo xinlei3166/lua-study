@@ -1,8 +1,11 @@
 -- 定义一个通用的方法，用于生成类
 utils = {}
 
-function utils.class(base)
+function utils.class(name, base)
     local cls = {}  -- 创建一个空表，用于存储类的成员
+    cls.name = name
+
+    --setmetatable(cls, base)
 
     function cls.__index(t, key)
         local val = rawget(cls, key)  -- 首先在当前类中查找
@@ -23,6 +26,13 @@ function utils.class(base)
         end
         cls.init(self, ...)  -- 调用当前类的初始化函数
         return self
+    end
+
+    function cls:getInstance(...)
+        if not cls.instance then
+            cls.instance = cls:new(...)
+        end
+        return cls.instance
     end
 
     return cls
