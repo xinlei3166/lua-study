@@ -3,7 +3,8 @@ utils = {}
 
 function utils.class(name, base)
     local cls = {}  -- 创建一个空表，用于存储类的成员
-    cls.name = name
+    cls.__name__ = name
+    cls.__base__ = base
 
     --setmetatable(cls, base)
 
